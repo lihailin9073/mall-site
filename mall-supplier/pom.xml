@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.wzliulan</groupId>
+        <artifactId>mall-site</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <!--<groupId>com.wzliulan</groupId>-->
+    <artifactId>mall-supplier</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>mall-supplier</name>
+    <description>Demo project for Spring Boot</description>
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.wzliulan</groupId>
+            <artifactId>mall-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+
+        <!--&lt;!&ndash;Swagger接口文档&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>com.spring4all</groupId>-->
+            <!--<artifactId>swagger-spring-boot-starter</artifactId>-->
+            <!--<version>1.9.1.RELEASE</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-validation</artifactId>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash; spring-boot-starter-validation 依赖用来解决Swagger报错；-->
+        <!--原因：使用springboot2.3.1.RELEASE 没有自动引入 validation对应的包-->
+        <!--参考博文：https://blog.csdn.net/weixin_42077318/article/details/107382232-->
+        <!--&ndash;&gt;-->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!-- 打包跳过单元测试 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+            <!--打包生成镜像上传服务器-->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.2.0</version>
+                <configuration>
+                    <!-- Docker宿主机地址 -->
+                    <dockerHost>http://192.168.1.201:2375</dockerHost>
+                    <!-- 镜像名字:版本号 -->
+                    <imageName>192.168.1.201:88/mall-site/${project.artifactId}:${project.version}</imageName>
+                    <!-- true 会覆盖构建相同标签的镜像 -->
+                    <forceTags>true</forceTags>
+                    <!--指定 Dockerfile 位置-->
+                    <dockerDirectory>docker</dockerDirectory>
+                    <!-- 将jar文件从target目录复制到镜像的根目录 -->
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <!--指定需要复制的根目录，下面表示target目录-->
+                            <directory>${project.build.directory}</directory>
+                            <!--指定需要复制的文件，下面指的是打包后的jar包文件-->
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

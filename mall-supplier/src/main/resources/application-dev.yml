@@ -1,0 +1,42 @@
+server:
+  port: 9033
+  servlet:
+    context-path:
+
+spring:
+  application:
+    name: mall-supplier
+
+  # Spring Boot Admin监控组件的Server地址
+  boot:
+    admin:
+      client:
+        url: http://localhost:9001
+        username: admin
+        password: admin123
+
+# 监控端点配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+
+# Swagger配置
+swagger:
+  title: mall-site接口文档
+  version: 2021.0
+  description: 商户平台接口文档
+  exclude-path: /error # 排除的api
+  base-package: com.wzliulan.mall
+  contact:
+    name: 梧州浏览科技
+    url: www.wzliulan.com
+    email: wzliulan@qq.com
+  authorization:
+    key-name: token
+

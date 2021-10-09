@@ -1,0 +1,5 @@
+# 指定当前应用的配置文件
+spring:
+  profiles:
+    active: dev
+

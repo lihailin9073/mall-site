@@ -1,0 +1,117 @@
+server:
+  port: 9011
+  servlet:
+    context-path:
+
+spring:
+  application:
+    name: mall-consumer
+  datasource:
+    druid:
+      url: jdbc:mysql://192.168.1.201:3306/mall-site?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&allowMultiQueries=true
+      username: root
+      password: LHLlhl@870104
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      # 指定启动连接池时，初始建立的连接数量
+      initial-size: 10
+      # 指定连接池中最小的活跃连接数
+      min-idle: 10
+      # 指定连接池中最大的活跃连接数
+      max-active: 20
+      # 指定连接池等待连接返回的最大等待时间 / 毫秒
+      max-wait: 60000
+      # 空闲连接回收的时间间隔，与test-while-idle一起使用，设置5分钟
+      time-between-eviction-runs-millis: 300000
+      test-while-idle: true
+      # 连接池空闲连接的有效时间 ，设置30分钟
+      min-evictable-idle-time-millis: 1800000
+      # 验证连接是否可用
+      validation-query: SELECT 1
+      # 允许执行多条SQL：注意！！不要同时配置filters和Filters，这里的配置和下面开启Druid控制台的配置有冲突、只能二选一！！
+      filter:
+        wall:
+          config:
+            multi-statement-allow: true
+
+  # Redis配置
+  redis:
+    host: 192.168.1.201
+    port: 16379
+    password: 123456
+    database: 1
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1ms
+        min-idle: 0
+
+  # json转换配置
+  jackson:
+    default-property-inclusion: ALWAYS
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+
+  # Spring Boot Admin监控组件的Server地址
+  boot:
+    admin:
+      client:
+        url: http://localhost:9001
+        username: admin
+        password: admin123
+
+# 监控端点配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+# 日志级别，会打印sql语句
+logging:
+  level:
+    com.wzliulan.mall.consumer.dao: debug
+
+# 商城安全配置
+mall:
+  auth:
+    allow-list:
+      - /actuator/
+      - /swagger-
+      - /webjars
+      - /v2
+      - /auth/register
+      - /auth/login
+      - /auth/login-by-phone
+      - /auth/login-by-wechat
+      - /auth/logout
+      - /sms/get-login-code
+      - /sms/get-register-code
+      - /email/get-login-code
+      - /email/get-register-code
+      - /open/
+      - /goods/
+      - /brand/
+      - /category/
+      - /cart/
+      - /shop/detail
+      - /shop/list
+      - /shop/search
+
+# Swagger配置
+swagger:
+  title: mall-site接口文档
+  version: 2021.0
+  description: 消费者服务系统接口文档
+  exclude-path: /error # 排除的api
+  base-package: com.wzliulan.mall
+  contact:
+    name: 梧州浏览科技
+    url: www.wzliulan.com
+    email: wzliulan@qq.com
+  authorization:
+    key-name: token
+

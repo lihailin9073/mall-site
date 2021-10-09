@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzliulan.mall.admin.dao.mapper.AdminMapper">
+
+    <select id="getPermissionCodeList" resultType="java.lang.String" parameterType="java.lang.String">
+    SELECT
+        m.`code`
+    FROM
+        sys_admin a
+    INNER JOIN sys_admin_role ar ON a.id = ar.user_id
+    INNER JOIN sys_role r ON r.id = ar.role_id
+    INNER JOIN sys_role_menu rm ON r.id = rm.role_id
+    INNER JOIN sys_menu m ON m.id = rm.menu_id
+    WHERE
+        a.id = #{user_id}
+    AND m.type = 3
+  </select>
+
+</mapper>

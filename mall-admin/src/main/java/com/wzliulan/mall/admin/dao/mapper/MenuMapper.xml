@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzliulan.mall.admin.dao.mapper.MenuMapper">
+    <!-- 查询指定用户所用的菜单权限（目录、菜单、按钮） -->
+    <select id="findByUserId" resultType="com.wzliulan.mall.admin.dao.model.Menu">
+        SELECT DISTINCT
+            m.*
+        FROM
+            sys_admin u
+        JOIN sys_admin_role ur ON u.id = ur.user_id
+        JOIN sys_role r ON r.id = ur.role_id
+        JOIN sys_role_menu rm ON r.id = rm.role_id
+        JOIN sys_menu m ON m.id = rm.menu_id
+        WHERE
+            u.id = #{userId}
+        ORDER BY
+            sort;
+    </select>
+</mapper>

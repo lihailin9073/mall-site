@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzliulan.mall.consumer.dao.mapper.UserMapper">
+
+    <!--会员权限查询方法-->
+    <select id="findPermissionList" resultType="java.util.Map" parameterType="java.util.Map">
+        SELECT
+            u.id as user_id,
+            u.user_name as user_name,
+            r.id as role_id,
+            r.name as role_name,
+            m.action
+        FROM
+            m_user u
+        INNER JOIN m_user_role ur ON u.id = ur.user_id
+        INNER JOIN m_role r ON r.id = ur.role_id
+        INNER JOIN m_role_menu mr ON r.id=mr.role_id
+        INNER JOIN m_menu m ON m.id=mr.menu_id
+        WHERE m.type=3 and u.id=#{user_id }
+  </select>
+</mapper>
