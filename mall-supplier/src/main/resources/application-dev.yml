@@ -1,11 +1,30 @@
 server:
-  port: 9033
+  port: 9022
   servlet:
     context-path:
 
 spring:
   application:
     name: mall-supplier
+
+  # Redis配置
+  redis:
+    host: 192.168.1.201
+    port: 16379
+    password: 123456
+    database: 1
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1ms
+        min-idle: 0
+
+  # json转换配置
+  jackson:
+    default-property-inclusion: ALWAYS
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
 
   # Spring Boot Admin监控组件的Server地址
   boot:
@@ -28,9 +47,9 @@ management:
 
 # Swagger配置
 swagger:
-  title: mall-site接口文档
+  title: mall-site 供应商服务系统接口文档
   version: 2021.0
-  description: 商户平台接口文档
+  description: 本文档涵盖了供应商端所有API的说明文档以及在线调试服务。
   exclude-path: /error # 排除的api
   base-package: com.wzliulan.mall
   contact:

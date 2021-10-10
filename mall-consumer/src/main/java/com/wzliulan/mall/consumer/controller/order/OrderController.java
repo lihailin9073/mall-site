@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-@Api(description = "订单服务 -> 订单服务接口")
+@Api(description = "订单服务 -> 订单接口")
 @RequestMapping("/order")
 @RestController
 public class OrderController {

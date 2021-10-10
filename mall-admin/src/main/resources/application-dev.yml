@@ -1,5 +1,5 @@
 server:
-  port: 9022
+  port: 9033
   servlet:
     context-path:
 
@@ -82,9 +82,9 @@ mall:
 
 # Swagger配置
 swagger:
-  title: mall-site接口文档
+  title: mall-site 运营者服务系统接口文档
   version: 2021.0
-  description: 管理后台系统接口文档
+  description: 本文档涵盖了运营者端所有API的说明文档以及在线调试服务。
   exclude-path: /error # 排除的api
   base-package: com.wzliulan.mall
   contact:

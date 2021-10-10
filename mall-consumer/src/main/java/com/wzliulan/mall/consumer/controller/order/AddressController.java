@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-@Api(description = "订单服务 -> 地址服务接口")
+@Api(description = "订单服务 -> 地址接口")
 @RequestMapping("/address")
 @RestController
 public class AddressController {

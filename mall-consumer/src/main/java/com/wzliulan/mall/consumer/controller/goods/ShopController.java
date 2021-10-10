@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-@Api(description = "店铺服务 -> 店铺服务接口")
+@Api(description = "商城服务 -> 店铺接口")
 @RequestMapping("/shop")
 @RestController
 public class ShopController {

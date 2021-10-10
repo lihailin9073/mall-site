@@ -93,19 +93,18 @@ mall:
       - /email/get-login-code
       - /email/get-register-code
       - /open/
+      - /ads/
       - /goods/
       - /brand/
       - /category/
       - /cart/
-      - /shop/detail
-      - /shop/list
-      - /shop/search
+      - /shop/
 
 # Swagger配置
 swagger:
-  title: mall-site接口文档
+  title: mall-site 消费者服务系统接口文档
   version: 2021.0
-  description: 消费者服务系统接口文档
+  description: 本文档涵盖了消费者端所有API的说明文档以及在线调试服务。
   exclude-path: /error # 排除的api
   base-package: com.wzliulan.mall
   contact:

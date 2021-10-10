@@ -23,7 +23,7 @@ import java.util.Random;
  * @author li.
  * @since 2021-10-03
  */
-@Api(description = "通知管理 -> 短信服务接口")
+@Api(description = "通知管理 -> 短信接口")
 @RestController
 @RequestMapping("/sms")
 public class SmsController {

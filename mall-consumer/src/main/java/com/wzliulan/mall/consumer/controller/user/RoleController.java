@@ -18,7 +18,7 @@ import java.util.UUID;
  * @author li.
  * @since 2021-10-02
  */
-@Api(description = "会员服务 -> 角色服务接口")
+@Api(description = "会员服务 -> 角色接口")
 @RestController
 @RequestMapping("/role")
 public class RoleController {

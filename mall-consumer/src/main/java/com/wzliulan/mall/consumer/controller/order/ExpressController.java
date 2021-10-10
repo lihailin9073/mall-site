@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-@Api(description = "订单服务 -> 快递服务接口")
+@Api(description = "订单服务 -> 快递接口")
 @RequestMapping("/express")
 @RestController
 public class ExpressController {

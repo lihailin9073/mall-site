@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author li.
  * @since 2021-10-03
  */
-@Api(description = "通知管理 -> 邮件服务接口")
+@Api(description = "通知管理 -> 邮件接口")
 @RestController
 @RequestMapping("/email")
 public class EmailController {

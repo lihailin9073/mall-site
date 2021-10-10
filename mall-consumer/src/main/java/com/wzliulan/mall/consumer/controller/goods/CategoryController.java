@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-@Api(description = "商城服务 -> 品类服务接口")
+@Api(description = "商城服务 -> 品类接口")
 @RequestMapping("/category")
 @RestController
 public class CategoryController {

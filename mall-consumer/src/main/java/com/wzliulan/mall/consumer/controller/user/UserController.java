@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-@Api(description = "会员服务 -> 用户服务接口")
+@Api(description = "会员服务 -> 用户接口")
 @RequestMapping("/user")
 @RestController
 public class UserController {

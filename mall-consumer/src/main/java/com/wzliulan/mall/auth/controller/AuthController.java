@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
-@Api(description = "安全管理 -> 安全服务接口")
+@Api(description = "安全管理 -> 安全接口")
 @Slf4j
 @RequestMapping("/auth")
 @RestController
